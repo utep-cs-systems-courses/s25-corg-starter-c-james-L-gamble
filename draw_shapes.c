@@ -26,3 +26,78 @@ void print_triangle(int leftCol, int size)
   }
 }
 
+void print_arrow(int rectangleWidth, int halfRectangleHeight)
+{
+  /*Idea: the triangle's base will be rectangleHeight * 3 asterisks long. The other two sides will each be
+    rectangleHeight long. So, we print rectangleHeight newlines, each with n asterisks after them, where n is
+    the current line number. We then print the rectangle, each line being appended with one asterisk more than
+    the last, until the number of asterisks after the rectangle is n * 2. We then print 1 less asterisk after
+    each line until there are 0 once more.*/
+
+
+  /*Print the first part of the triangle, and the space above the rectangle.*/
+
+  int blankHeight = halfRectangleHeight;
+  int blankWidth = rectangleWidth;
+  int triangleAsterisks = 1;
+
+  /* Prints the first quarter of the triangle, and the blank space above the rectangle */
+  for(int i = 0; i < blankHeight;i++){
+    for(int j = 0; j < blankWidth;j++){
+      printf(" ");
+    }
+    for(int j = 0; j < triangleAsterisks;j++){
+      printf("*");
+    }
+    triangleAsterisks++;
+    printf("\n");
+  }
+
+  /* Prints the second quarter of the triangle, and the first half of the rectangle that forms the body of the arrow. */
+  for(int i = 0; i < halfRectangleHeight-1;i++){
+    for(int j = 0; j < rectangleWidth;j++){
+      printf("*");
+    }
+    for(int j = 0; j < triangleAsterisks;j++){
+      if(triangleAsterisks < (halfRectangleHeight * 2)){
+	printf("*");
+      }
+    }
+    triangleAsterisks++;
+    printf("\n");
+  }
+
+  /* Prints the middle line of the arrow, to make it symetrical */
+  for(int i = 0; i < (triangleAsterisks + rectangleWidth); i++){
+    printf("*");
+  }
+  printf("\n");
+  triangleAsterisks--; /* Decrement to print proper triangle size at the start of the third quarter */
+
+  
+  /* Prints the third quarter of the triangle, and the second half of the rectangle that forms the body of the arrow. */
+  for(int i = 0; i < halfRectangleHeight-1;i++){
+    for(int j = 0; j < rectangleWidth;j++){
+      printf("*");
+    }
+    for(int j = 0; j < triangleAsterisks;j++){
+      if(triangleAsterisks > (halfRectangleHeight)){
+	printf("*");
+      }
+    }
+    triangleAsterisks--;
+    printf("\n");
+  }
+
+  /* Prints the fourth quarter of the triangle, and the blank space below the rectangle. */
+  for(int i = 0; i < blankHeight;i++){
+    for(int j = 0; j < blankWidth;j++){
+      printf(" ");
+    }
+    for(int j = 0; j < triangleAsterisks;j++){
+      printf("*");
+    }
+    triangleAsterisks--;
+    printf("\n");
+  }  
+}
