@@ -26,13 +26,19 @@ void print_triangle(int leftCol, int size)
   }
 }
 
-void print_arrow(int rectangleWidth, int halfRectangleHeight)
+void print_arrow(int triangleEdge,int rectangleEdge, int triangleSize, int rectangleSize){
+  /* Idea: The point of the arrow is a triangle, the body of the arrow is a rectangle.*/
+
+  print_triangle(triangleEdge,triangleSize);
+  print_square(rectangleEdge,rectangleSize);
+
+}
+
+void print_right_facing_arrow(int rectangleWidth, int halfRectangleHeight)
 {
-  /*Idea: the triangle's base will be rectangleHeight * 3 asterisks long. The other two sides will each be
-    rectangleHeight long. So, we print rectangleHeight newlines, each with n asterisks after them, where n is
-    the current line number. We then print the rectangle, each line being appended with one asterisk more than
-    the last, until the number of asterisks after the rectangle is n * 2. We then print 1 less asterisk after
-    each line until there are 0 once more.*/
+  //I misheard the instructions, believing the triangle had to point right.
+
+  /*Idea: the triangle's base will be rectangleHeight * 3 asterisks long. The other two sides will each be rectangleHeight long. So, we print rectangleHeight newlines, each with n asterisks after them, where n is the current line number. We then print the rectangle, each line being appended with one asterisk more than the last, until the number of asterisks after the rectangle is n * 2. We then print 1 less astrisk after each line until there are 0 once more.*/
 
 
   /*Print the first part of the triangle, and the space above the rectangle.*/
